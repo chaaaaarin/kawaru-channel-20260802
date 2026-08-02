@@ -1,0 +1,116 @@
+<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>🎁 AIエージェント/Kawaru — プレゼントキット</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet"><style>
+:root{--brand:#1C3461;--brand-deep:#16284A;--brand-soft:rgba(28,52,97,.08);--accent:#5BBCD4;--accent-deep:#2C7A93;
+--bg:#F7FAFC;--paper:#FFFFFF;--ink:#1C3461;--ink-mid:#4A6080;--line:rgba(28,52,97,.12);--head:'Noto Sans JP';}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',-apple-system,'Hiragino Sans',sans-serif;line-height:1.7;}
+.wrap{max-width:960px;margin:0 auto;background:var(--paper);min-height:100vh;}
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:2px solid var(--brand);padding:16px 28px;}
+header .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+header img{width:40px;height:40px;border-radius:50%;border:2px solid var(--paper);box-shadow:0 2px 8px rgba(0,0,0,.14);}
+header .ttl{font-family:var(--head);font-weight:900;font-size:20px;color:var(--brand-deep);line-height:1.2;}
+header .ttl small{display:block;font-size:12px;color:var(--ink-mid);font-weight:500;}
+.badge{display:inline-block;background:var(--brand);color:#fff;font-family:var(--head);font-weight:900;font-size:13px;border-radius:999px;padding:4px 14px;}
+main{padding:24px 28px 60px;}
+.hero{padding:34px 0 22px;text-align:center;}
+.hero h1{font-family:var(--head);font-weight:900;font-size:30px;color:var(--brand-deep);line-height:1.3;margin-bottom:10px;}
+.hero p{font-size:15px;color:var(--ink-mid);max-width:660px;margin:0 auto;}
+.pcard{display:flex;align-items:center;gap:16px;background:var(--paper);border:1.5px solid var(--line);border-left:5px solid var(--brand);
+border-radius:16px;padding:18px 20px;margin:14px 0;text-decoration:none;color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.05);transition:.15s;}
+.pcard:hover{border-color:var(--brand);transform:translateY(-2px);}
+.pemoji{flex-shrink:0;line-height:0;}
+.pbody{flex:1;}.pt{font-family:var(--head);font-weight:900;font-size:18px;color:var(--ink);}
+.pd{font-size:13.5px;color:var(--ink-mid);margin-top:3px;}
+.pright{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;}
+.parr{font-family:var(--head);font-weight:900;color:var(--brand-deep);font-size:14px;}
+h2.cat{font-family:var(--head);font-weight:900;font-size:22px;color:var(--ink);margin:36px 0 14px;padding-left:12px;border-left:5px solid var(--brand);}
+.lead{font-size:15px;color:var(--ink-mid);margin-bottom:16px;}
+.icard{background:var(--paper);border:1.5px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.ititle{font-family:var(--head);font-weight:900;font-size:16px;color:var(--ink);margin-bottom:5px;}
+.imeta{font-size:13px;color:var(--ink-mid);margin-bottom:10px;}
+pre.prompt{background:var(--ink);color:#ECECEA;border-radius:10px;padding:14px 16px;white-space:pre-wrap;word-break:break-word;
+font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;max-height:320px;overflow-y:auto;margin-bottom:10px;}
+.cbtns{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);border:2px solid var(--brand);color:var(--ink);
+border-radius:999px;padding:8px 18px;font-weight:900;font-size:14px;cursor:pointer;text-decoration:none;font-family:'Noto Sans JP';}
+.btn.ghost{background:var(--paper);border:1.5px solid var(--line);color:var(--brand-deep);}
+.btn.sm{padding:6px 14px;font-size:13px;}
+.pnote{margin:24px 0;padding:16px 20px;background:var(--brand-soft);border:1.5px solid var(--brand);border-radius:14px;font-size:14px;color:var(--ink);}
+footer{padding:26px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-mid);text-align:center;margin-top:10px;}
+@media(max-width:600px){main{padding:18px 16px 50px;}header{padding:12px 16px;}.pcard{padding:14px;}.hero{padding:24px 0 14px;}.hero h1{font-size:24px;}}
+</style></head><body><div class="wrap">
+<header><div class="top">
+<img src="data:image/png;base64,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" alt="AIエージェント/Kawaru">
+<div class="ttl">GPT-5.6 Luna 過小評価されすぎ<small>AIエージェント/Kawaru・プレゼントキット</small></div>
+</div></header>
+<main>
+<div class="hero"><h1>🎁 3つのプレゼント</h1><p>下のカードから、それぞれの受け取りページを開けます。各ページで、項目ごとにコピー、または全件ダウンロードできます。</p></div>
+
+<a class="pcard" href="https://chaaaaarin.github.io/kawaru-channel-20260802/kit-luna-prompts100.html" target="_blank" rel="noopener"><div class="pemoji"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="var(--brand-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/><path d="M12 20h9"/></svg></div><div class="pbody"><div class="pt">Luna格上げ運用プロンプト100選</div><div class="pd">コーディング／リサーチ／文章作成／レビューの4ジャンル×25本。推論設定を上げたLunaにそのまま貼って使えます。</div></div><div class="pright"><span class="badge">100個</span><span class="parr">開く →</span></div></a>
+
+<a class="pcard" href="https://chaaaaarin.github.io/kawaru-channel-20260802/kit-luna-routing-rules50.html" target="_blank" rel="noopener"><div class="pemoji"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="var(--brand-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6" r="2.2"/><path d="M7.7 6H15a3.5 3.5 0 010 7H9a3.5 3.5 0 000 7h3"/><circle cx="18.5" cy="18" r="2.2"/></svg></div><div class="pbody"><div class="pt">Luna前提 モデル振り分けルール50本</div><div class="pd">AGENTS.md・CLAUDE.mdに貼っておくと、AI側が「この仕事はLuna、ここはSol」と自分で振り分け、推論設定まで判断してくれるようになるルール文です。</div></div><div class="pright"><span class="badge">50本</span><span class="parr">開く →</span></div></a>
+
+<h2 class="cat">コスト削減シミュレーションシート</h2>
+<p class="lead">現在Sol・Terraに任せているタスクのうち、Lunaに移せるものを見積もり、削減額を試算するための5ステップシートです。</p>
+<div class="icard">
+<div class="ititle">Lunaコスト削減シミュレーションシート</div>
+<div class="imeta">使い方: そのままテキストとして手元に置き、□を埋めながら進めてください。指示例はそのままAIのチャット欄に貼り付けられます。</div>
+<pre class="prompt" id="cs1">【Lunaコスト削減シミュレーションシート】
+
+■ ステップ1：現状のAI利用コストを洗い出す
+□ 直近1ヶ月のAPI利用料金の合計はいくらか
+→ YES: 明細から合計金額を記録する
+指示例: 直近1ヶ月のAPI利用明細を確認し、モデル別（Sol/Terra/Luna等）の合計金額と割合を表にまとめてください。
+
+□ その中で、Sol・Terraに任せているタスクの内訳が分かるか
+→ YES: タスクの種類（コーディング/文書作成/分析等）ごとに集計する
+指示例: 直近1ヶ月のAPIリクエストログから、タスクの種類ごとの呼び出し回数とトークン消費量を集計してください。
+
+■ ステップ2：Lunaに移せるタスクを判定する
+□ 仕様・要件が事前に明確に決まっているタスクか
+→ YES: Luna移行の第一候補
+□ 長い会話履歴や大量資料を一度に読ませる必要があるか
+→ YES: Lunaは長文脈理解が弱いため、当面はTerra/Solのまま残す
+□ 曖昧な判断・企画立案を求めるタスクか
+→ YES: Lunaでは力不足の可能性が高い。Solのまま残す
+指示例: このタスク一覧を確認し、それぞれ「仕様が明確か」「長い文脈が必要か」「曖昧な判断が要るか」の3点で分類し、Luna移行に向くタスクだけを抜き出してください。
+
+■ ステップ3：移行候補タスクの削減額を試算する
+□ 移行候補タスクの現在の月間コストが分かるか
+→ YES: そのコストを基準値とする
+□ Lunaの価格（入力$0.20/出力$1.20 ・ 100万トークンあたり）で同じ処理量を再計算したか
+→ YES: 差額が削減見込み額になる
+指示例: 移行候補タスクの月間トークン消費量をもとに、現在のモデル価格とLunaの価格（入力$0.20/出力$1.20、100万トークンあたり）でそれぞれ月額コストを計算し、差額と削減率を表で示してください。
+
+■ ステップ4：推論設定によるコスト増を織り込む
+□ Luna移行後、reasoning effort（推論設定）をHigh/Maxに上げる必要があるタスクか
+→ YES: High/Max設定は同じLunaでもトークン消費が増えるため、その分を上乗せして再試算する
+指示例: このタスクをLuna Highで実行した場合の想定トークン消費量を、Low設定時と比較して見積もってください。差が大きい場合はその理由も添えてください。
+
+■ ステップ5：段階的に移行し、実測値で見直す
+□ まず1つのタスク種別だけを1週間Lunaに任せてみたか
+→ YES: 実際のコスト・品質を記録し、試算値と比較する
+□ 品質が想定より落ちる場面が出たか
+→ YES: そのタスクだけTerra/Solに戻し、それ以外の移行を継続する
+指示例: 今週Lunaに任せたタスクの実際のコストと成果物の品質を、事前の試算値と比較して差分を報告してください。
+
+※ 本シートの試算はあくまで見積もりです。実際の削減額は利用状況・推論設定・タスクの複雑さにより変動します。断定的な削減保証はできません。</pre>
+<div class="cbtns"><button class="btn sm" onclick="copyPrompt('cs1', this)">📋 コピー</button><button class="btn sm ghost" onclick="downloadText('cs1','cost-simulation-sheet.md', this)">⬇ ダウンロード</button></div>
+</div>
+
+<div class="pnote">受け取り方：各ページを開き、使いたい項目の「📋 コピー」を押すか、上部/各カードの「⬇」でファイルごとに保存できます。100選プロンプト集は、ページ上部の「⬇ 全件ダウンロード」でまとめて保存することもできます。</div>
+</main>
+<footer>AIエージェント/Kawaru ｜ このプレゼントは自由に使ってください</footer>
+<script>
+function copyTextWithFallback(text){
+  function fb(){try{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();
+    const ok=document.execCommand('copy');ta.remove();return ok;}catch(e){return false;}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){return navigator.clipboard.writeText(text).then(()=>true).catch(fb);}
+  return Promise.resolve(fb());
+}
+function showCopyResult(btn,ok){const o=btn.dataset.o||btn.textContent;btn.dataset.o=o;
+  btn.textContent=ok?'✔ コピーしました':'✖ コピー不可 → ⬇をご利用ください';setTimeout(()=>{btn.textContent=o;},ok?1600:3200);}
+async function copyPrompt(id,btn){const ok=await copyTextWithFallback(document.getElementById(id).textContent);showCopyResult(btn,ok);}
+function downloadText(id,fn,btn){try{const t=document.getElementById(id).textContent;const b=new Blob([t],{type:'text/plain;charset=utf-8'});
+  const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),2000);}catch(e){if(btn){const o=btn.textContent;btn.textContent='✖ 保存不可';setTimeout(()=>{btn.textContent=o;},3000);}}}
+</script></div></body></html>
